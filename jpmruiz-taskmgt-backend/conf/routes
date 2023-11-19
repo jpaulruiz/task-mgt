@@ -1,0 +1,40 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index()
+
+# Authentication controller
+POST    /logon                      controllers.AuthController.index()
+GET     /logout                     controllers.AuthController.logout()
+GET     /authentication             controllers.AuthController.isAuthenticated()
+
+# User controller
+GET     /account                    controllers.UserController.get()
+# Register controller
+POST    /account                    controllers.RegisterController.create()
+
+# Board controller
+GET     /board                      controllers.BoardController.get()
+POST    /board                      controllers.BoardController.create()
+POST    /boardUpdate                controllers.BoardController.update()
+POST    /boardDeletion              controllers.BoardController.delete()
+
+# Board Member Controller
+GET     /boardMember/:id                  controllers.BoardMemberController.get(id: String)
+GET     /boardMembers                controllers.BoardMemberController.gets()
+POST    /boardMember                controllers.BoardMemberController.create()
+
+# Task Controller
+GET     /tasks                       controllers.TaskController.gets()
+GET     /task/:id                   controllers.TaskController.get(id: String)
+POST    /task                       controllers.TaskController.create()
+POST    /taskUpdate                 controllers.TaskController.update()
+
+# Websocket Controller
+GET     /ws                         controllers.PekkoController.boardSocket()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
